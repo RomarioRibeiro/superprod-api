@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.romario.superprod.domain.Chamado;
 import com.romario.superprod.domain.Empresa;
+import com.romario.superprod.domain.Funcionario;
 import com.romario.superprod.domain.LogSistema;
 import com.romario.superprod.domain.Maquina;
 import com.romario.superprod.domain.Molde;
@@ -70,6 +71,13 @@ public class LogSistemaService {
 	}
 	
 	public LogSistema insert(Chamado obj, String acao) {
+		String usuarioLogado = daringSecurity.getUsuario();
+		String comando = (acao + obj.toString());
+		LogSistema log = new LogSistema(null, comando, OffsetDateTime.now(), usuarioLogado, obj);
+		return log;
+	}
+	
+	public LogSistema insert(Funcionario obj, String acao) {
 		String usuarioLogado = daringSecurity.getUsuario();
 		String comando = (acao + obj.toString());
 		LogSistema log = new LogSistema(null, comando, OffsetDateTime.now(), usuarioLogado, obj);

@@ -8,9 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.romario.superprod.domain.MoldeMaquina;
+import com.romario.superprod.domain.MoldeMaquinaPK;
 
 @Repository
-public interface MoldeMaquinaRepository extends JpaRepository<MoldeMaquina, Integer>{
+public interface MoldeMaquinaRepository extends JpaRepository<MoldeMaquina, MoldeMaquinaPK>{
 	
 	
 	@Modifying

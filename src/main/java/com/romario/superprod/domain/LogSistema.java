@@ -70,6 +70,11 @@ public class LogSistema {
 	@JoinColumn(name = "chamado_id")
 	private Chamado chamado;
 
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "funcionario_id")
+	private Funcionario funcionario;
+
 	public LogSistema() {
 	}
 
@@ -81,8 +86,7 @@ public class LogSistema {
 		this.status = true;
 	}
 
-	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado,
-			Usuario usuario) {
+	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado, Usuario usuario) {
 		this.id = id;
 		this.comando = comando;
 		this.datagravacao = datagravacao;
@@ -91,8 +95,7 @@ public class LogSistema {
 		this.usuario = usuario;
 	}
 
-	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado,
-			Empresa empresa) {
+	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado, Empresa empresa) {
 		this.id = id;
 		this.comando = comando;
 		this.datagravacao = datagravacao;
@@ -101,8 +104,7 @@ public class LogSistema {
 		this.empresa = empresa;
 	}
 
-	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado,
-			Molde molde) {
+	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado, Molde molde) {
 		super();
 		this.id = id;
 		this.comando = comando;
@@ -112,8 +114,7 @@ public class LogSistema {
 		this.molde = molde;
 	}
 
-	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado,
-			Produto produto) {
+	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado, Produto produto) {
 		super();
 		this.id = id;
 		this.comando = comando;
@@ -123,8 +124,7 @@ public class LogSistema {
 		this.produto = produto;
 	}
 
-	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado,
-			Maquina maquina) {
+	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado, Maquina maquina) {
 		super();
 		this.id = id;
 		this.comando = comando;
@@ -156,8 +156,7 @@ public class LogSistema {
 		this.producao = producao;
 	}
 
-	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado, 
-			Chamado chamado) {
+	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado, Chamado chamado) {
 		super();
 		this.id = id;
 		this.comando = comando;
@@ -165,6 +164,17 @@ public class LogSistema {
 		this.loginusuario = usuariologado;
 		this.status = true;
 		this.chamado = chamado;
+	}
+
+	public LogSistema(Integer id, String comando, OffsetDateTime datagravacao, String usuariologado,
+			Funcionario funcionario) {
+		super();
+		this.id = id;
+		this.comando = comando;
+		this.datagravacao = datagravacao;
+		this.loginusuario = usuariologado;
+		this.status = true;
+		this.funcionario = funcionario;
 	}
 
 	public Integer getId() {
@@ -277,6 +287,14 @@ public class LogSistema {
 
 	public void setChamado(Chamado chamado) {
 		this.chamado = chamado;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 }

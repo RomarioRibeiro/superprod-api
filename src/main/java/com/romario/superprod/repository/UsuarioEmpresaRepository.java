@@ -8,9 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.romario.superprod.domain.UsuarioEmpresa;
+import com.romario.superprod.domain.UsuarioEmpresaPK;
 
 @Repository
-public interface UsuarioEmpresaRepository extends JpaRepository<UsuarioEmpresa, Integer> {
+public interface UsuarioEmpresaRepository extends JpaRepository<UsuarioEmpresa, UsuarioEmpresaPK> {
 
 //	@Query(value = "select empresapadrao from usuario_empresa where id_empresa = ? and id_usuario = ?", nativeQuery = true)
 //	Integer verificaEmpPadrao(Integer id, Integer id2);
