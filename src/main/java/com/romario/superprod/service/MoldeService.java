@@ -134,21 +134,21 @@ public class MoldeService {
 	}
 	
 	@Transactional
-	public Molde insert(Molde obj) {
-		obj.setId(null);
+	public Molde insert(Molde novoObj) {
+		novoObj.setId(null);
 		Integer produto = repo.produtoMaisUm();
 		Produto p = new Produto();
 		p.setId(produto);
-		p.setNome(obj.getNome());
-		p.setSku(obj.getSku());
+		p.setNome(novoObj.getNome());
+		p.setSku(novoObj.getSku());
 		p.setTenant(tenantUsuario.buscarOuFalhar());
 		salvarProduto(p);
-		obj.setProduto_id(p.getId());
-		obj.setTenant(tenantUsuario.buscarOuFalhar());
-		repo.save(obj);
-		logMolde(obj, "inserir");
+		novoObj.setProduto_id(p.getId());
+		novoObj.setTenant(tenantUsuario.buscarOuFalhar());
+		repo.save(novoObj);
+		logMolde(novoObj, "inserir");
 		logProduto(p, "inserir");
-		return obj;
+		return novoObj;
 	}
 	
 	

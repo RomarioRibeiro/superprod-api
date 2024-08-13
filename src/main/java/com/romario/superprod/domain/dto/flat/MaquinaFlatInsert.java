@@ -17,7 +17,7 @@ public class MaquinaFlatInsert {
 	private String peso;
 	private Integer numero;
 	private Boolean status;
-	private Set<MoldeMaquinaFlatInsert> moldeMaquina = new HashSet<>();
+	private Set<MoldeMaquinaFlatUpdate> moldeMaquina = new HashSet<>();
 	private OffsetDateTime datagravacao;
 	private String loginusuario;
 
@@ -25,7 +25,7 @@ public class MaquinaFlatInsert {
 	}
 
 	public MaquinaFlatInsert(Integer id, String nome, String peso, Integer numero, Boolean status,
-			Set<MoldeMaquinaFlatInsert> moldeMaquina, OffsetDateTime datagravacao, String loginusuario) {
+			Set<MoldeMaquinaFlatUpdate> moldeMaquina, OffsetDateTime datagravacao, String loginusuario) {
 		this.id = id;
 		this.nome = nome;
 		this.peso = peso;
@@ -76,11 +76,13 @@ public class MaquinaFlatInsert {
 		this.status = status;
 	}
 
-	public Set<MoldeMaquinaFlatInsert> getMoldeMaquina() {
+	
+
+	public Set<MoldeMaquinaFlatUpdate> getMoldeMaquina() {
 		return moldeMaquina;
 	}
 
-	public void setMoldeMaquina(Set<MoldeMaquinaFlatInsert> moldeMaquina) {
+	public void setMoldeMaquina(Set<MoldeMaquinaFlatUpdate> moldeMaquina) {
 		this.moldeMaquina = moldeMaquina;
 	}
 
@@ -130,7 +132,7 @@ public class MaquinaFlatInsert {
 
 	private void maquinaMolde(Maquina obj) {
 		for (MoldeMaquina moldemaquinas : obj.getMoldeMaquina()) {
-			MoldeMaquinaFlatInsert moldemaquinaflat = new MoldeMaquinaFlatInsert(moldemaquinas);
+			MoldeMaquinaFlatUpdate moldemaquinaflat = new MoldeMaquinaFlatUpdate(moldemaquinas);
 			moldeMaquina.add(moldemaquinaflat);
 		}
 	}

@@ -121,6 +121,8 @@ public class Molde {
 	public void addLogs(LogSistema log) {
 		logs.add(log);
 	}
+	
+	
 
 	public LogSistema getLogs() {
 		Integer codigo = 0;
@@ -160,6 +162,8 @@ public class Molde {
 		Molde other = (Molde) obj;
 		return Objects.equals(id, other.id);
 	}
+	
+	
 	
 
 }

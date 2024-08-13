@@ -14,13 +14,13 @@ public class MaquinaFlatUpdate {
 	private String peso;
 	private Integer numero;
 	private Boolean status;
-	private Set<MaquinaFlatMolde> moldeMaquina = new HashSet<>();
+	private Set<MoldeMaquinaFlatUpdate> moldeMaquina = new HashSet<>();
 
 	public MaquinaFlatUpdate() {
 	}
 
 	public MaquinaFlatUpdate(Integer id, String nome, String peso, Integer numero, Boolean status,
-			Set<MaquinaFlatMolde> moldeMaquina) {
+			Set<MoldeMaquinaFlatUpdate> moldeMaquina) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -79,11 +79,13 @@ public class MaquinaFlatUpdate {
 		this.status = status;
 	}
 
-	public Set<MaquinaFlatMolde> getMoldeMaquina() {
+	
+
+	public Set<MoldeMaquinaFlatUpdate> getMoldeMaquina() {
 		return moldeMaquina;
 	}
 
-	public void setMoldeMaquina(Set<MaquinaFlatMolde> moldeMaquina) {
+	public void setMoldeMaquina(Set<MoldeMaquinaFlatUpdate> moldeMaquina) {
 		this.moldeMaquina = moldeMaquina;
 	}
 
@@ -108,7 +110,7 @@ public class MaquinaFlatUpdate {
 
 	private void maquinaMolde(Maquina obj) {
 		for (MoldeMaquina conveniosExames : obj.getMoldeMaquina()) {
-			MaquinaFlatMolde convenioExames = new MaquinaFlatMolde(conveniosExames);
+			MoldeMaquinaFlatUpdate convenioExames = new MoldeMaquinaFlatUpdate(conveniosExames);
 			moldeMaquina.add(convenioExames);
 		}
 	}

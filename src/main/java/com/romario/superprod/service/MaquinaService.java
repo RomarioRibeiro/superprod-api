@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 
 import com.romario.superprod.domain.LogSistema;
 import com.romario.superprod.domain.Maquina;
+import com.romario.superprod.domain.Molde;
 import com.romario.superprod.domain.MoldeMaquina;
 import com.romario.superprod.domain.MoldeMaquinaPK;
 import com.romario.superprod.domain.dto.flat.MaquinaFlatInsert;
 import com.romario.superprod.domain.dto.flat.MaquinaFlatMolde;
 import com.romario.superprod.domain.dto.flat.MaquinaFlatUpdate;
 import com.romario.superprod.domain.dto.flat.MoldeMaquinaFlatInsert;
+import com.romario.superprod.domain.dto.flat.MoldeMaquinaFlatUpdate;
 import com.romario.superprod.repository.LogSistemaRepository;
 import com.romario.superprod.repository.MaquinaRepository;
 import com.romario.superprod.repository.MoldeMaquinaRepository;
@@ -104,7 +106,7 @@ public class MaquinaService {
 		maquina.setNumero(obj.getNumero());
 		maquina.setTenant(tenantUsuario.buscarOuFalhar());
 		repo.save(maquina);
-		for (MoldeMaquinaFlatInsert ipp : novoFlat.getMoldeMaquina()) {
+		for (MoldeMaquinaFlatUpdate ipp : novoFlat.getMoldeMaquina()) {
 			MoldeMaquinaPK maquinachave = new MoldeMaquinaPK();
 			maquinachave.setMaquina(maquina);
 			maquinachave.setMolde(molderepo.findByCodigo(ipp.getIdmolde()));
@@ -125,12 +127,19 @@ public class MaquinaService {
 		maquina.setId(novoobj.getId());
 		maquina.setStatus(novoobj.getStatus());
 		maquina.setNome(novoobj.getNome());
+		maquina.setNumero(novoobj.getNumero());
+		maquina.setPeso(novoobj.getPeso());
 		maquina.setTenant(tenantUsuario.buscarOuFalhar());
 		repoMoldeMaquina.deleteByIdMaquina(maquina.getId());
-		for (MaquinaFlatMolde ipp : novoobj.getMoldeMaquina()) {
+		for (MoldeMaquinaFlatUpdate ipp : novoobj.getMoldeMaquina()) {
 			MoldeMaquinaPK maquinachave = new MoldeMaquinaPK();
 			maquinachave.setMaquina(maquina);
-			maquinachave.setMolde(molderepo.findByCodigo(ipp.getIdMolde()));
+			
+			Molde molde = molderepo.findByCodigo(ipp.getIdmolde());
+			System.out.println("Id Molde = " + molde);
+			maquinachave.setMolde(molderepo.findByCodigo(ipp.getIdmolde()));
+			
+			
 			MoldeMaquina moldemaquina = new MoldeMaquina();
 			moldemaquina.setStatus(true);
 			moldemaquina.setId(maquinachave);

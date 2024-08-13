@@ -3,12 +3,15 @@ package com.romario.superprod.domain.dto.flat;
 import java.time.OffsetDateTime;
 
 import com.romario.superprod.domain.Operador;
+import com.romario.superprod.validation.operador.OperadorInsert;
 
+@OperadorInsert
 public class OperadorFlat {
 
 	private Integer id;
 	private String nome;
 	private Integer numero;
+	private String operador;
 	private Boolean status = Boolean.TRUE;
 	private OffsetDateTime datagravacao;
 	private String loginusuario;
@@ -81,6 +84,14 @@ public class OperadorFlat {
 
 	public void setLoginusuario(String loginusuario) {
 		this.loginusuario = loginusuario;
+	}
+
+	public String getOperador() {
+		return operador;
+	}
+
+	public void setOperador(String operador) {
+		this.operador = operador;
 	}
 
 }

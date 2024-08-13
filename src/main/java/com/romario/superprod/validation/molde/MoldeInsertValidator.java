@@ -1,4 +1,4 @@
-package com.romario.superprod.validation.operador;
+package com.romario.superprod.validation.molde;
 
 
 import java.util.ArrayList;
@@ -9,29 +9,29 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.romario.superprod.domain.Operador;
-import com.romario.superprod.domain.dto.flat.OperadorFlat;
-import com.romario.superprod.repository.OperadorRepository;
+import com.romario.superprod.domain.Molde;
+import com.romario.superprod.domain.dto.flat.MoldeFlat;
+import com.romario.superprod.repository.MoldeRepository;
 import com.romario.superprod.resource.execption.FieldMessage;
 
 
 
-public class OperadorInsertValidator implements ConstraintValidator<OperadorInsert, OperadorFlat> {
+public class MoldeInsertValidator implements ConstraintValidator<MoldeInsert, MoldeFlat> {
 	
 	@Autowired
-	private OperadorRepository repo;
+	private MoldeRepository repo;
 
 	@Override
-	public void initialize(OperadorInsert ann) {
+	public void initialize(MoldeInsert ann) {
 	}
 
 	@Override
-	public boolean isValid(OperadorFlat objDto, ConstraintValidatorContext context) {
+	public boolean isValid(MoldeFlat objDto, ConstraintValidatorContext context) {
 		List<FieldMessage> list = new ArrayList<>();
 		
-		Operador aux1 = repo.findByNumero(objDto.getNumero());
+		Molde aux1 = repo.findByNome(objDto.getNome());
 		if(aux1 !=null) {
-			list.add(new FieldMessage("operador"," Operador já existente"));
+			list.add(new FieldMessage("Molde"," Molde já existente"));
 			}	
 
 		for (FieldMessage e : list) {

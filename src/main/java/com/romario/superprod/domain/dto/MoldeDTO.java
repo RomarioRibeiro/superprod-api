@@ -4,6 +4,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.romario.superprod.validation.molde.MoldeUpdate;
+
+@MoldeUpdate
 public class MoldeDTO {
 
 	@Id

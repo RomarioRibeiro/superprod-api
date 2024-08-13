@@ -3,13 +3,15 @@ package com.romario.superprod.domain.dto.flat;
 import java.time.OffsetDateTime;
 
 import com.romario.superprod.domain.Molde;
-import com.romario.superprod.domain.Operador;
+import com.romario.superprod.validation.molde.MoldeInsert;
 
+@MoldeInsert
 public class MoldeFlat {
 
 	private Integer id;
 	private String nome;
 	private String sku;
+	private String molde;
 	private OffsetDateTime datagravacao;
 	private String loginusuario;
 	private Boolean status = Boolean.TRUE;
@@ -19,6 +21,7 @@ public class MoldeFlat {
 
 	public MoldeFlat(Integer id, String nome, String sku, OffsetDateTime datagravacao, String loginusuario,
 			Boolean status) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.sku = sku;
@@ -34,10 +37,8 @@ public class MoldeFlat {
 		this.loginusuario = obj.getLogs().getLoginusuario();
 		this.sku = obj.getSku();
 		this.status = obj.getStatus();
-		
+
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -86,7 +87,13 @@ public class MoldeFlat {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-	
-	
+
+	public String getMolde() {
+		return molde;
+	}
+
+	public void setMolde(String molde) {
+		this.molde = molde;
+	}
 
 }

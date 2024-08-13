@@ -28,7 +28,7 @@ public interface MoldeRepository extends JpaRepository<Molde, Integer> {
 	@Query(value= "	select max(produto_id + 1) from molde", nativeQuery = true)
 	Integer produtoMaisUm();
 	
-	@Query(value= "select * from molde where id= ?", nativeQuery = true)
+	@Query(value= "select * from molde where id = ?", nativeQuery = true)
 	Molde findByCodigo(Integer idMolde);
 	
 	
@@ -37,5 +37,7 @@ public interface MoldeRepository extends JpaRepository<Molde, Integer> {
 	
 	@Query(value= "select * from molde where tenant_id = ?", nativeQuery = true)
 	List<Molde> molde(Integer tenant);
+	
+	Molde findByNome(String nome);
 
 }
