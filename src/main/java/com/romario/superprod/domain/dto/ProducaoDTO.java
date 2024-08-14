@@ -3,6 +3,7 @@ package com.romario.superprod.domain.dto;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
+import com.romario.superprod.domain.Funcionario;
 import com.romario.superprod.domain.Maquina;
 import com.romario.superprod.domain.Operador;
 import com.romario.superprod.domain.Produto;
@@ -30,6 +31,9 @@ public class ProducaoDTO {
 	private Produto produto;
 	private Integer idproduto;
 	private String nomeproduto;
+	private Funcionario funcionario;
+	private Integer idfuncionario;
+	private String nomefuncionario;
 
 	public ProducaoDTO() {
 	}
@@ -37,7 +41,8 @@ public class ProducaoDTO {
 	public ProducaoDTO(Integer id, String obs, Date dataprevisao, Integer quantidade, String cor, Integer perda,
 			Integer tempomaquina, OffsetDateTime dataproducao, String horainicio, String horafinal, String turno,
 			Boolean status, Operador operador, Integer idoperador, String nomeoperador, Maquina maquina,
-			Integer idmaquina, Integer nomemaquina, Produto produto, Integer idproduto, String nomeproduto) {
+			Integer idmaquina, Integer nomemaquina, Produto produto, Integer idproduto, String nomeproduto,
+			Funcionario funcionario, Integer idfuncionario, String nomefuncionario) {
 		this.id = id;
 		this.obs = obs;
 		this.dataprevisao = dataprevisao;
@@ -59,6 +64,9 @@ public class ProducaoDTO {
 		this.produto = produto;
 		this.idproduto = idproduto;
 		this.nomeproduto = nomeproduto;
+		this.funcionario = funcionario;
+		this.idfuncionario = idfuncionario;
+		this.nomefuncionario = nomefuncionario;
 	}
 
 	public Integer getId() {
@@ -251,6 +259,30 @@ public class ProducaoDTO {
 		this.produto = obj.getProduto();
 		this.idproduto = obj.produto.getId();
 		this.nomeproduto = obj.produto.getNome();
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public Integer getIdfuncionario() {
+		return idfuncionario;
+	}
+
+	public void setIdfuncionario(Integer idfuncionario) {
+		this.idfuncionario = idfuncionario;
+	}
+
+	public String getNomefuncionario() {
+		return nomefuncionario;
+	}
+
+	public void setNomefuncionario(String nomefuncionario) {
+		this.nomefuncionario = nomefuncionario;
 	}
 
 }

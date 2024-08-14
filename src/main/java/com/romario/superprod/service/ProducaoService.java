@@ -109,10 +109,14 @@ public class ProducaoService {
 		producao.setMaquina(novoObj.getMaquina());
 		producao.setOperador(novoObj.getOperador());
 		producao.setProduto(novoObj.getProduto());
+		producao.setFuncionario(novoObj.getFuncionario());
 		producao.setTenant(tenantUsuario.buscarOuFalhar());
+		
 		novoObj.setIdmaquina(producao.getMaquina().getId());
 		novoObj.setIdoperador(producao.getOperador().getId());
 		novoObj.setIdprouto(producao.getProduto().getId());
+		novoObj.setIdfuncionario(producao.getFuncionario().getId());
+		
 		producao.setCor(novoObj.getCor());
 		producao.setDataprevisao(novoObj.getDataprevisao());
 		producao.setDataproducao(novoObj.getDataproducao());

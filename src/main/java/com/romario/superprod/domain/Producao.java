@@ -48,6 +48,9 @@ public class Producao {
 	@ManyToOne
 	private Produto produto;
 
+	@ManyToOne
+	private Funcionario funcionario;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "producao")
 	private List<LogSistema> logs = new ArrayList<LogSistema>();
@@ -57,7 +60,7 @@ public class Producao {
 
 	public Producao(Integer id, String obs, Date dataprevisao, Integer quantidade, String cor, Integer perda,
 			Integer tempomaquina, OffsetDateTime dataproducao, String horainicio, String horafinal, String turno,
-			Boolean status, Operador operador, Tenant tenant, Maquina maquina, Produto produto, List<LogSistema> logs) {
+			Boolean status, Operador operador, Tenant tenant, Maquina maquina, Produto produto, List<LogSistema> logs, Funcionario funcionario) {
 		this.id = id;
 		this.obs = obs;
 		this.dataprevisao = dataprevisao;
@@ -75,6 +78,7 @@ public class Producao {
 		this.maquina = maquina;
 		this.produto = produto;
 		this.logs = logs;
+		this.funcionario = funcionario;
 	}
 
 	public Producao(@Valid ProducaoNewDTO obj) {
@@ -126,7 +130,7 @@ public class Producao {
 		this.maquina = obj.getMaquina();
 		this.operador = obj.getOperador();
 		this.produto = obj.getProduto();
-
+		this.funcionario = obj.getFuncionario();
 	}
 
 	public Integer getId() {
@@ -294,6 +298,14 @@ public class Producao {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 }

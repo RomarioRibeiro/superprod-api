@@ -20,13 +20,14 @@ public class ProducaoNewDTO {
 	private Integer operadorID;
 	private Integer maquinaID;
 	private Integer produtoID;
+	private Integer funcionarioID;
 
 	public ProducaoNewDTO() {
 	}
 
 	public ProducaoNewDTO(Integer id, String obs, Date dataprevicao, Integer quantidade, String cor, Integer perda,
 			Integer tempomaquina, OffsetDateTime dataproducao, String horainicio, String horafinal, String turno,
-			Boolean status, Integer operadorID, Integer maquinaID, Integer produtoID) {
+			Boolean status, Integer operadorID, Integer maquinaID, Integer produtoID, Integer funfuncionarioID) {
 		this.id = id;
 		this.obs = obs;
 		this.dataprevicao = dataprevicao;
@@ -42,6 +43,7 @@ public class ProducaoNewDTO {
 		this.operadorID = operadorID;
 		this.maquinaID = maquinaID;
 		this.produtoID = produtoID;
+		this.funcionarioID = funfuncionarioID;
 	}
 
 	public Integer getId() {
@@ -162,6 +164,14 @@ public class ProducaoNewDTO {
 
 	public void setDataprevicao(Date dataprevicao) {
 		this.dataprevicao = dataprevicao;
+	}
+
+	public Integer getFuncionarioID() {
+		return funcionarioID;
+	}
+
+	public void setFuncionarioID(Integer funcionarioID) {
+		this.funcionarioID = funcionarioID;
 	}
 
 }

@@ -3,6 +3,7 @@ package com.romario.superprod.domain.dto.flat;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
+import com.romario.superprod.domain.Funcionario;
 import com.romario.superprod.domain.Maquina;
 import com.romario.superprod.domain.Operador;
 import com.romario.superprod.domain.Producao;
@@ -30,6 +31,9 @@ public class ProducaoFlat {
 	private Produto produto;
 	private Integer idprouto;
 	private String nomeProduto;
+	private Funcionario funcionario;
+	private Integer idfuncionario;
+	private String nomefuncionario;
 	private Boolean status = Boolean.TRUE;
 
 	private OffsetDateTime datagravacao;
@@ -42,7 +46,8 @@ public class ProducaoFlat {
 			Integer perda, Integer tempomaquina, OffsetDateTime dataproducao, String horainicio, String horafinal,
 			String turno, Operador operador, Integer idoperador, String nomeOperador, Maquina maquina,
 			Integer idmaquina, Integer nomeMaquina, Produto produto, Integer idprouto, String nomeProduto,
-			Boolean status, OffsetDateTime datagravacao, String loginusuario) {
+			Boolean status, OffsetDateTime datagravacao, String loginusuario,Funcionario funcionario,
+			Integer idfuncionario, String nomefuncionario) {
 		this.id = id;
 		this.obs = obs;
 		this.dataprevisao = dataprevisao;
@@ -66,6 +71,9 @@ public class ProducaoFlat {
 		this.status = status;
 		this.datagravacao = datagravacao;
 		this.loginusuario = loginusuario;
+		this.funcionario = funcionario;
+		this.idfuncionario = idfuncionario;
+		this.nomefuncionario = nomefuncionario;
 	}
 
 	public ProducaoFlat(Producao obj) {
@@ -84,6 +92,7 @@ public class ProducaoFlat {
 		this.nomeOperador = obj.getOperador().getNome();
 		this.nomeProduto = obj.getProduto().getNome();
 		this.nomeMaquina = obj.getMaquina().getNumero();
+		this.nomefuncionario = obj.getFuncionario().getNome();
 		this.maquina = obj.getMaquina();
 		this.produto = obj.getProduto();
 		this.datagravacao = obj.getLogs().getDatagravacao();
@@ -92,6 +101,10 @@ public class ProducaoFlat {
 		this.idmaquina = obj.getMaquina().getId();
 		this.idoperador = obj.getOperador().getId();
 		this.idprouto = obj.getProduto().getId();
+		
+		this.funcionario = obj.getFuncionario();
+		this.idfuncionario = obj.getFuncionario().getId();
+		this.nomefuncionario = obj.getFuncionario().getNome();
 
 	}
 
@@ -111,6 +124,7 @@ public class ProducaoFlat {
 		this.nomeOperador = obj.getOperador().getNome();
 		this.nomeProduto = obj.getProduto().getNome();
 		this.nomeMaquina = obj.getMaquina().getNumero();
+		this.nomefuncionario = obj.getFuncionario().getNome();
 		// this.maquinaID = obj.getMaquina();
 		// this.produtoID = obj.getProduto();
 		this.datagravacao = obj.getLogs().getDatagravacao();
@@ -300,6 +314,30 @@ public class ProducaoFlat {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public Integer getIdfuncionario() {
+		return idfuncionario;
+	}
+
+	public void setIdfuncionario(Integer idfuncionario) {
+		this.idfuncionario = idfuncionario;
+	}
+
+	public String getNomefuncionario() {
+		return nomefuncionario;
+	}
+
+	public void setNomefuncionario(String nomefuncionario) {
+		this.nomefuncionario = nomefuncionario;
 	}
 
 }
