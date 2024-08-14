@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.romario.superprod.domain.Funcionario;
+import com.romario.superprod.domain.dto.FuncionarioDTO;
 import com.romario.superprod.domain.dto.flat.FuncionarioFlat;
 import com.romario.superprod.repository.FuncioarioRepository;
 import com.romario.superprod.service.FuncionarioService;
@@ -72,7 +73,7 @@ public class FuncionarioResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Funcionario> update(@Valid @RequestBody FuncionarioFlat obj, @PathVariable Integer id) {
+	public ResponseEntity<Funcionario> update(@Valid @RequestBody FuncionarioDTO obj, @PathVariable Integer id) {
 		obj.setId(id);
 		Funcionario novoobj = new Funcionario(obj);
 		Funcionario atividadeAtualizado = funcionarioService.from(novoobj);

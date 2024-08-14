@@ -3,12 +3,15 @@ package com.romario.superprod.domain.dto.flat;
 import java.time.OffsetDateTime;
 
 import com.romario.superprod.domain.Funcionario;
+import com.romario.superprod.validation.funcionario.FuncionarioInsert;
 
+@FuncionarioInsert
 public class FuncionarioFlat {
 
 	private Integer id;
 	private String nome;
 	private String funcao;
+	private String funcionario;
 	private Boolean status = Boolean.TRUE;
 	private OffsetDateTime datagravacao;
 	private String loginusuario;
@@ -83,6 +86,14 @@ public class FuncionarioFlat {
 
 	public void setLoginusuario(String loginusuario) {
 		this.loginusuario = loginusuario;
+	}
+
+	public String getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(String funcionario) {
+		this.funcionario = funcionario;
 	}
 
 }

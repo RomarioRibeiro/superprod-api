@@ -4,11 +4,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.romario.superprod.validation.funcionario.FuncionarioUpdate;
+
+@FuncionarioUpdate
 public class FuncionarioDTO {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String nome;
 	private String funcao;
 	private Boolean status = Boolean.TRUE;
@@ -17,7 +18,7 @@ public class FuncionarioDTO {
 		super();
 	}
 
-	public FuncionarioDTO(Long id, String nome, String funcao, Boolean status) {
+	public FuncionarioDTO(Integer id, String nome, String funcao, Boolean status) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -25,11 +26,11 @@ public class FuncionarioDTO {
 		this.status = status;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

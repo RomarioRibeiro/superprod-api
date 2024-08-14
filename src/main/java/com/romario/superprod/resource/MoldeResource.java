@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +21,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.romario.superprod.domain.Molde;
 import com.romario.superprod.domain.dto.MoldeDTO;
-import com.romario.superprod.domain.dto.MoldeNewDTO;
 import com.romario.superprod.domain.dto.flat.MoldeFlat;
 import com.romario.superprod.domain.dto.flat.MoldeMaquinaFlatInsert;
+import com.romario.superprod.repository.MoldeRepository;
+import com.romario.superprod.repository.filter.MoldeFilter;
 import com.romario.superprod.service.MoldeService;
 
 @RestController
@@ -33,6 +36,9 @@ public class MoldeResource {
 	
 	@Autowired
 	private MoldeService service;
+	
+	@Autowired
+	private MoldeRepository repo;
 //	
 //	@Autowired
 //	private RelAtendimento relservice;
@@ -43,6 +49,13 @@ public class MoldeResource {
 		
 		return ResponseEntity.ok(list);
 	}
+	
+//	@RequestMapping(method = RequestMethod.GET)
+//	public Page<MoldeFlat> findAllPag(MoldeFilter moldeFilter, Pageable pageable) {
+//		Page<Molde> pacs = repo.filtrar(moldeFilter, pageable);
+//		Page<MoldeFlat> atedflat = service.mudarPacienteParaFlat(pacs);
+//		return atedflat;
+//	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
@@ -102,7 +115,7 @@ public class MoldeResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Molde> update(@Valid @RequestBody MoldeFlat obj, @PathVariable Integer id) {
+	public ResponseEntity<Molde> update(@Valid @RequestBody MoldeDTO obj, @PathVariable Integer id) {
 		obj.setId(id);
 		Molde novoobj = new Molde(obj);
 		Molde atividadeAtualizado = service.from(novoobj);

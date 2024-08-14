@@ -64,7 +64,7 @@ public class ProdutoResource {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Produto> update(@Valid @RequestBody ProdutoFlat obj, @PathVariable Integer id) {
+	public ResponseEntity<Produto> update(@Valid @RequestBody ProdutoDTO obj, @PathVariable Integer id) {
 		obj.setId(id);
 		Produto novoobj = new Produto(obj);
 		Produto atividadeAtualizado = service.from(novoobj);

@@ -40,6 +40,15 @@ public class MoldeFlat {
 
 	}
 
+	public MoldeFlat(Molde obj, String string) {
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+//		this.datagravacao = obj.getLogs().getDatagravacao();
+//		this.loginusuario = obj.getLogs().getLoginusuario();
+//		this.sku = obj.getSku();
+//		this.status = obj.getStatus();
+	}
+
 	public Integer getId() {
 		return id;
 	}

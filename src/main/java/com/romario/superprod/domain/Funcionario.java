@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.romario.superprod.domain.dto.FuncionarioDTO;
 import com.romario.superprod.domain.dto.flat.FuncionarioFlat;
 
 @Entity
@@ -45,6 +46,13 @@ public class Funcionario {
 	}
 
 	public Funcionario(@Valid FuncionarioFlat obj) {
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.funcao = obj.getFuncao();
+		this.status = obj.getStatus();
+	}
+
+	public Funcionario(@Valid FuncionarioDTO obj) {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.funcao = obj.getFuncao();

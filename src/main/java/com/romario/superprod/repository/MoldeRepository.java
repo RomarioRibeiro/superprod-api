@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.romario.superprod.domain.Molde;
+import com.romario.superprod.repository.query.MoldeRepositoryQuery;
 
 @Repository
-public interface MoldeRepository extends JpaRepository<Molde, Integer> {
+public interface MoldeRepository extends JpaRepository<Molde, Integer>, MoldeRepositoryQuery {
 
 	@Query(value = "select * from molde", nativeQuery = true)
 	List<Molde> findAllSql();

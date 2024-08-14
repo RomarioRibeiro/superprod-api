@@ -25,6 +25,9 @@ public interface FuncioarioRepository extends JpaRepository<Funcionario, Integer
 
 	@Query(value = "select * from funcionario where status = 0 and tenant_id = ?", nativeQuery = true)
 	List<Funcionario> findAllSqlInativo(Integer buscarOuFalharInt);
+
+
+	Funcionario findByNome(String nome);
 	
 	
 	

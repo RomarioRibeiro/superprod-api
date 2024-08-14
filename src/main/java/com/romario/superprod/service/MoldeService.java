@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
 import com.romario.superprod.domain.LogSistema;
@@ -16,10 +18,12 @@ import com.romario.superprod.domain.Maquina;
 import com.romario.superprod.domain.Molde;
 import com.romario.superprod.domain.MoldeMaquina;
 import com.romario.superprod.domain.Operador;
+import com.romario.superprod.domain.Producao;
 import com.romario.superprod.domain.Produto;
 import com.romario.superprod.domain.dto.flat.MoldeFlat;
 import com.romario.superprod.domain.dto.flat.MoldeMaquinaFlatInsert;
 import com.romario.superprod.domain.dto.flat.OperadorFlat;
+import com.romario.superprod.domain.dto.flat.ProducaoFlat;
 import com.romario.superprod.repository.LogSistemaRepository;
 import com.romario.superprod.repository.MaquinaRepository;
 import com.romario.superprod.repository.MoldeRepository;
@@ -186,6 +190,20 @@ public class MoldeService {
 		molde.setTenant(tenantUsuario.buscarOuFalhar());
 		logMolde(molde, "status");
 
+	}
+	
+	public Page<MoldeFlat> mudarPacienteParaFlat(Page<Molde> pacs) {
+		List<MoldeFlat> cFlats = new ArrayList<MoldeFlat>();
+
+		for (Molde p : pacs.getContent()) {
+			MoldeFlat cFlat = new MoldeFlat(p, "control");
+			cFlats.add(cFlat);
+
+		}
+		Page<MoldeFlat> page = new PageImpl<>(cFlats, pacs.getPageable(),
+				pacs.getTotalElements());
+
+		return page;
 	}
 
 	

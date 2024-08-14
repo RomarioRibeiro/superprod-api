@@ -73,7 +73,7 @@ public class OperadorResource {
 	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Operador> update(@Valid @RequestBody OperadorFlat obj, @PathVariable Integer id) {
+	public ResponseEntity<Operador> update(@Valid @RequestBody OperadorDTO obj, @PathVariable Integer id) {
 		obj.setId(id);
 		Operador novoobj = new Operador(obj);
 		Operador atividadeAtualizado = service.from(novoobj);
